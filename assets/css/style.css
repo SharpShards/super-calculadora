@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root{
+    --prin: #62d033;
+    --sec: #a61914;
+    --fundo: #010101;
+    --con: #171717;
+    --det: #272727;
+    --letras: #FFF;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+
+    box-sizing: border-box;
+    
+    font-family: 'Montserrat', sans-serif;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+input,
+textarea{
+    background-color: transparent;
+
+    border: none;
+
+    caret-color: var(--prin);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+body{
+    display: flex;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+aside{
+    display: flex;
+
+    height: 100vh;
+    width: 80px;
+
+    border-right: 1px solid var(--det);
+
+    flex-direction: column;
+}
+
+aside div{
+    flex: 1;
+    display: flex;
+
+    background-color: var(--fundo);
+
+    justify-content: center;
+    align-items: center;
+}
+
+aside div:hover{
+    cursor: pointer;
+}
+
+main{
+    flex: 1;    
+
+    background-color: var(--fundo);
+}
+
+main #sctBasica{
+    display: flex;
+
+    height: 100%;
+    width: 100%;
+
+    flex-direction: column;
+}
+
+main #sctBasica #sctDisplay{
+    flex: 1;
+    display: flex;
+
+    background-color: var(--fundo);
+    
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+main #sctBasica #sctDisplay #taOperacao{
+    height: 50%;
+    width: 100%;
+}
+
+main #sctBasica #sctDisplay #taResultado{
+    height: 50%;
+    width: 100%;
+}
+
+main #sctBasica #sctDisplay #taResultado,
+main #sctBasica #sctDisplay #taOperacao{
+    color: var(--letras);
+    font-size: 5rem;
+    font-weight: 300;
+
+    text-align: end;
+
+    resize: none;
+
+    padding-top: calc(14rem / 2);
+    padding-left: 40px;
+    padding-right: 40px;
+
+    overflow: hidden;
+}
+
+main #sctBasica #sctButtons{
+    display: flex;
+
+    height: fit-content;
+    width: 100%;
+
+    background-color: var(--fundo);
+
+    padding: 20px;
+}
+
+main #sctBasica #sctButtons #dvCientifica{
+    flex: 1;
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 60px);
+    grid-gap: 10px;
+}
+
+main #sctBasica #sctButtons #dvBasico{
+    flex: 1;
+    display: grid;
+
+    margin-left: 20px;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 60px);
+    grid-gap: 10px;
+}
+
+main #sctBasica #sctButtons #dvCientifica button,
+main #sctBasica #sctButtons #dvBasico button{
+    background-color: var(--con);
+
+    color: var(--letras);
+    font-size: 2rem;
+    font-weight: 400;
+    
+    border-radius: 7px;
+
+    border: none;
+}
+
+main #sctBasica #sctButtons #dvBasico button:nth-child(1),
+main #sctBasica #sctButtons #dvBasico button:nth-child(2),
+main #sctBasica #sctButtons #dvBasico button:nth-child(3),
+main #sctBasica #sctButtons #dvBasico button:nth-child(8),
+main #sctBasica #sctButtons #dvBasico button:nth-child(12),
+main #sctBasica #sctButtons #dvBasico button:nth-child(16),
+main #sctBasica #sctButtons #dvBasico button:nth-child(20){
+    color: var(--prin);
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+main #sctBasica #sctButtons #dvBasico button:nth-child(4){
+    color: var(--sec);
+    font-weight: 700;
+}
+
+main #sctBasica #sctButtons #dvBasico button:nth-child(18){
+    font-size: 5rem;
+}
+
+main #sctBasica #sctButtons #dvBasico button:nth-child(19){
+    background-color: var(--prin);
+
+    font-weight: 400;
+}
+
+main #sctBasica #sctButtons #dvBasico button:nth-child(12),
+main #sctBasica #sctButtons #dvBasico button:nth-child(16),
+main #sctBasica #sctButtons #dvBasico button:nth-child(19),
+main #sctBasica #sctButtons #dvBasico button:nth-child(20){
+    font-size: 3rem;
+}
