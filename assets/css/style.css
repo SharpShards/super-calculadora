@@ -189,12 +189,13 @@ main #sctBasica #sctButtons #dvBasico button:nth-child(18){
 main #sctBasica #sctButtons #dvBasico button:nth-child(19){
     background-color: var(--prin);
 
-    font-weight: 400;
+    color: var(--fundo);
+    font-size: 4rem;
+    font-weight: 500;
 }
 
 main #sctBasica #sctButtons #dvBasico button:nth-child(12),
 main #sctBasica #sctButtons #dvBasico button:nth-child(16),
-main #sctBasica #sctButtons #dvBasico button:nth-child(19),
 main #sctBasica #sctButtons #dvBasico button:nth-child(20){
     font-size: 3rem;
 }
