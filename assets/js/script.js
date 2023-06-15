@@ -1,19 +1,27 @@
 let termo = "";
+let display = "";
+let novo = "";
+let inter = "";
 
 function atualizarDisplay(carac){
-    display = oper.value;    
+    display += carac;
 
     // Apagar tudo
     if(carac == "c"){
         oper.value = "";
+        display = "";
         termo = "";
-
+        
         return;
-    }    
+    }        
 
     // Limite de caracteres
-    if(termo.length == 20 || // Número maior que 15 dígitos + 4 pontos + 1 por algum motivo
-    display == 200){ // Caractere total no display
+    if((termo.length == 15 || // Número tamanho máximo de 15 dígitos
+    display == 200) && // Caractere total no display
+    (carac != "+" &&
+    carac != "-" &&
+    carac != "/" &&
+    carac != "x")){
         return;
     } 
 
@@ -22,85 +30,14 @@ function atualizarDisplay(carac){
     termo[0] == 0 // Caractere antreior for 0
     ){
         oper.value = display.replace(display[display.lastIndexOf(0)], "");
-        termo = oper.value;
+        termo = oper.value;        
     }
 
     // Atualizar
     if(carac != "c"){
-        oper.value += carac;
-    }
+        oper.value += carac;        
+    }    
 
-    // Formatar
-    if(display.length == 3){ // 0.000
-        novo = oper.value[oper.value.length - 4] + '.';
-
-        for(let loop = 1; loop <= 3; loop++){
-            novo += oper.value[loop];
-        }        
-
-        oper.value = novo;
-        termo = novo;
-    }else if(display.length >= 5){
-        novo = oper.value.replace(/[.]/g,"");
-        oper.value = novo;
-
-        if(novo.length == 5){ // 00.000
-            novo = novo.substring(0,2) + "." +
-                oper.value.substring(2,5);
-        }else if(novo.length == 6){ // 000.000
-            novo = novo.substring(0,3) + "." +
-                oper.value.substring(3,6);  
-        }else if(novo.length == 7){ // 0.000.000  
-            novo = oper.value[0] + '.' +
-                oper.value.substring(1,4) + "." +
-                oper.value.substring(4,8);
-        }else if(novo.length == 8){ // 00.000.000  
-            novo = oper.value.substring(0,2) + "." +
-                oper.value.substring(2,5) + "." +
-                oper.value.substring(5,9);
-        }else if(novo.length == 9){ // 000.000.000
-            novo = oper.value.substring(0,3) + "." +
-                oper.value.substring(3,6) + "." +
-                oper.value.substring(6,10);
-        }else if(novo.length == 10){ // 0.000.000.000
-            novo = oper.value[0] + "." + 
-                oper.value.substring(1,4) + "." +
-                oper.value.substring(4,7) + "." +
-                oper.value.substring(7,11);
-        }else if(novo.length == 11){ // 00.000.000.000
-            novo = oper.value.substring(0,2) + "." + 
-                oper.value.substring(2,5) + "." +
-                oper.value.substring(5,8) + "." +
-                oper.value.substring(8,12);
-        }else if(novo.length == 12){ // 000.000.000.000
-            novo = oper.value.substring(0,3) + "." + 
-                oper.value.substring(3,6) + "." +
-                oper.value.substring(6,9) + "." +
-                oper.value.substring(9,13);
-        }else if(novo.length == 13){ // 0.000.000.000.000
-            novo = oper.value[0] + "." + 
-                oper.value.substring(1,4) + "." +
-                oper.value.substring(4,7) + "." +
-                oper.value.substring(7,10) + "." +
-                oper.value.substring(10,15);
-        }else if(novo.length == 14){ // 00.000.000.000.000
-            novo = oper.value.substring(0,2) + "." + 
-                oper.value.substring(2,5) + "." +
-                oper.value.substring(5,8) + "." +
-                oper.value.substring(8,11) + "." +
-                oper.value.substring(11,16);
-        }else if(novo.length == 15){ // 000.000.000.000.000
-            novo = oper.value.substring(0,3) + "." + 
-                oper.value.substring(3,6) + "." +
-                oper.value.substring(6,9) + "." +
-                oper.value.substring(9,12) + "." +
-                oper.value.substring(12,17);
-        }
-        
-        oper.value = novo;
-        termo = novo;
-    }
-    
     // Identificar termos
     if(carac == "+" ||
     carac == "-" ||
@@ -108,8 +45,78 @@ function atualizarDisplay(carac){
     carac == "x" ||
     carac == "c"){
         termo = "";
+
+        return;
     }else{
         termo += carac;
+    }
+
+    // Formatar
+    if(termo.length == 4){ // 0.000
+        inter = oper.value.replace(termo, ""); // inter recebe o que ta no display, mas sem o termo atual
+
+        novo = termo[0] + '.' + termo.substring(1,4);
+
+        oper.value = inter + novo; // termos antigos + atual
+    }else if(display.length >= 5){
+        novo = termo.replace(/[.]/g,"");
+
+        if(novo.length == 5){ // 00.000
+            novo = termo.substring(0,2) + "." +
+                termo.substring(2,5);
+        }else if(novo.length == 6){ // 000.000
+            novo = termo.substring(0,3) + "." +
+                termo.substring(3,6);  
+        }else if(novo.length == 7){ // 0.000.000  
+            novo = termo[0] + '.' +
+                termo.substring(1,4) + "." +
+                termo.substring(4,8);
+        }else if(novo.length == 8){ // 00.000.000  
+            novo = termo.substring(0,2) + "." +
+                termo.substring(2,5) + "." +
+                termo.substring(5,9);
+        }else if(novo.length == 9){ // 000.000.000
+            novo = termo.substring(0,3) + "." +
+                termo.substring(3,6) + "." +
+                termo.substring(6,10);
+        }else if(novo.length == 10){ // 0.000.000.000
+            novo = termo[0] + "." + 
+                termo.substring(1,4) + "." +
+                termo.substring(4,7) + "." +
+                termo.substring(7,11);
+        }else if(novo.length == 11){ // 00.000.000.000
+            novo = termo.substring(0,2) + "." + 
+                termo.substring(2,5) + "." +
+                termo.substring(5,8) + "." +
+                termo.substring(8,12);
+        }else if(novo.length == 12){ // 000.000.000.000
+            novo = termo.substring(0,3) + "." + 
+                termo.substring(3,6) + "." +
+                termo.substring(6,9) + "." +
+                termo.substring(9,13);
+        }else if(novo.length == 13){ // 0.000.000.000.000
+            novo = termo[0] + "." + 
+                termo.substring(1,4) + "." +
+                termo.substring(4,7) + "." +
+                termo.substring(7,10) + "." +
+                termo.substring(10,15);
+        }else if(novo.length == 14){ // 00.000.000.000.000
+            novo = termo.substring(0,2) + "." + 
+                termo.substring(2,5) + "." +
+                termo.substring(5,8) + "." +
+                termo.substring(8,11) + "." +
+                termo.substring(11,16);
+        }else if(novo.length == 15){ // 000.000.000.000.000
+            novo = termo.substring(0,3) + "." + 
+               termo.substring(3,6) + "." +
+                termo.substring(6,9) + "." +
+                termo.substring(9,12) + "." +
+                termo.substring(12,17);
+        }        
+
+        inter = (oper.value.replace(/[.]/g,"")).replace(termo, ""); // inter recebe o que ta no display, mas sem o termo atual
+        
+        oper.value = inter + novo // termos antigos + atual
     }
 }
 
