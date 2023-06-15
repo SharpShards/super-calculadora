@@ -12,14 +12,15 @@
     <script src="assets/js/script.js" defer></script>
 </head>
 <body>
-    <aside>
+    <!-- Versão 3 -->
+    <!-- <aside>
         <div id="dvCalculadora">
             <img id="imgCalculadora" src="" alt="Calculadora.">
         </div>
         <div id="dvConversor">
             <img id="imgConversor" src="" alt="Conversor.">
         </div>
-    </aside>
+    </aside> -->
     <main>
         <section id="sctBasica">
             <section id="sctDisplay">
@@ -27,7 +28,8 @@
                 <textarea id="taResultado" maxlength="50" disabled></textarea>
             </section>
             <section id="sctButtons">
-                <div id="dvCientifica">
+                <!-- Versão 2 -->
+                <!-- <div id="dvCientifica">
                     <button>√</button>
                     <button>π</button>
                     <button>|x|</button>
@@ -47,30 +49,32 @@
                     <button>1/x</button>
                     <button>e</button>
                     <button>e<sup>x</sup></button>
-                </div>
+                </div> -->
                 <div id="dvBasico">
                     <button>(</button>
                     <button>)</button>
                     <button>%</button>
                     <button>C</button>
 
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
+                    <button id="btnSete">7</button>
+                    <button id="btnOito">8</button>
+                    <button id="btnNove">9</button>
                     <button>÷</button>
 
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
+                    <button id="btnQua">4</button>
+                    <button id="btnCin">5</button>
+                    <button id="btnSeis">6</button>
                     <button>×</button>
 
                     <button id="btnUm">1</button>
-                    <button>2</button>
-                    <button>3</button>
+                    <button id="btnDois">2</button>
+                    <button id="btnTres">3</button>
                     <button>-</button>
                     
                     <button>0</button>
-                    <button>,</button>
+                    <button>
+                        <img src="assets/images/virgula.png" alt="Vírgula">
+                    </button>
                     <button>=</button>
                     <button>+</button>
                 </div>

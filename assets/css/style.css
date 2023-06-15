@@ -80,7 +80,7 @@ main #sctBasica{
     height: 100%;
     width: 100%;
 
-    flex-direction: column;
+    flex-direction: column;    
 }
 
 main #sctBasica #sctDisplay{
@@ -145,8 +145,6 @@ main #sctBasica #sctButtons #dvBasico{
     flex: 1;
     display: grid;
 
-    margin-left: 20px;
-
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 60px);
     grid-gap: 10px;
@@ -184,6 +182,10 @@ main #sctBasica #sctButtons #dvBasico button:nth-child(4){
 
 main #sctBasica #sctButtons #dvBasico button:nth-child(18){
     font-size: 5rem;
+}
+
+main #sctBasica #sctButtons #dvBasico button:nth-child(18) img{
+    height: 40%;
 }
 
 main #sctBasica #sctButtons #dvBasico button:nth-child(19){
