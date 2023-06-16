@@ -11,6 +11,7 @@ function atualizarDisplay(carac){
         oper.value = "";
         display = "";
         termo = "";
+        inter = "";
         
         return;
     }        
@@ -23,14 +24,6 @@ function atualizarDisplay(carac){
     carac != "/" &&
     carac != "x")){
         return;
-    } 
-
-    // Verificar se é um 0 + Número
-    if(carac > 0 && // Próximo caractere for um número
-    termo[0] == 0 // Caractere antreior for 0
-    ){
-        oper.value = display.replace(display[display.lastIndexOf(0)], "");
-        termo = oper.value;        
     }
 
     // Atualizar
@@ -46,19 +39,21 @@ function atualizarDisplay(carac){
     carac == "c"){
         termo = "";
 
+        inter = oper.value; // Recebe o que ta no display, sem o termo atual
+
         return;
     }else{
         termo += carac;
     }
 
     // Formatar
-    if(termo.length == 4){ // 0.000
-        inter = oper.value.replace(termo, ""); // inter recebe o que ta no display, mas sem o termo atual
-
+    if(termo.length == 4 && // 0.000
+        termo.indexOf(",") < 0){ // É decimal 
         novo = termo[0] + '.' + termo.substring(1,4);
 
         oper.value = inter + novo; // termos antigos + atual
-    }else if(display.length >= 5){
+    }else if(display.length >= 5 &&
+            termo.indexOf(",") < 0){ // É decimal 
         novo = termo.replace(/[.]/g,"");
 
         if(novo.length == 5){ // 00.000
@@ -113,8 +108,6 @@ function atualizarDisplay(carac){
                 termo.substring(9,12) + "." +
                 termo.substring(12,17);
         }        
-
-        inter = (oper.value.replace(/[.]/g,"")).replace(termo, ""); // inter recebe o que ta no display, mas sem o termo atual
         
         oper.value = inter + novo // termos antigos + atual
     }
@@ -195,7 +188,8 @@ const zero = document.querySelector("main #sctBasica #sctButtons #dvBasico butto
         last == "+0" ||
         last == "-0" ||
         last == "x0" ||
-        last == "/0"){
+        last == "/0" ||
+        termo.length <= 0){ // Sem zeros à esquerda
             event.preventDefault();
         }else{            
             atualizarDisplay("0");
@@ -249,23 +243,15 @@ const nove = document.querySelector("#btnNove");
 
 const vir = document.querySelector("main #sctBasica #sctButtons #dvBasico button:nth-child(18)");
     vir.addEventListener("click", function adicionarVirgula(event){
-        last = oper.value[oper.value.length - 1];        
+        last = oper.value[oper.value.length - 1];
 
         if(last == "," ||
-        last == "-" ||
-        last == "x" ||
-        last == "/" ||
-        last == "+" ||
         termo.indexOf(',') > 0){ // Um mesmo número não pode ter mais de uma vírgula.
             event.preventDefault();
-        }else if(oper.value.length == 0){
-            oper.value = "0,";
+        }else if(termo.length == 0){
+            oper.value += "0,";
+            termo = "0,";
         }else{            
             atualizarDisplay(",")
         }
     })
-
-// Se colocar zero antes de um número, o número substitui o zero
-// tirar ponto antes de sinal de operação
-// pontos estão dando problemas
-// 
