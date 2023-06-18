@@ -113,6 +113,10 @@ function atualizarDisplay(carac){
         
         oper.value = inter + novo // termos antigos + atual
     }
+
+    // Rolar para a parte mais recente do display
+    oper.scrollTop = oper.scrollHeight; 
+    result.scrollTop = oper.scrollHeight;
 }
 
 function retornarResultado(conta){
