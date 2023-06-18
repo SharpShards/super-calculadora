@@ -128,9 +128,13 @@ function retornarResultado(conta){
     }
 
     // Tirar pontos
+    conta = conta.replace(/["."]/g, "");
+
+    // Substituir x por operador de multiplicação
     conta = conta.replace(/["x"]/g, "*");
 
     // Resolvendo conta
+    console.log(conta);
     res = eval(conta);
 
     // Retornando resultado
