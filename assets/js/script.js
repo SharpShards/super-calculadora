@@ -2,8 +2,10 @@ let termo = "";
 let display = "";
 let novo = "";
 let inter = "";
+let res = "";
 
 function atualizarDisplay(carac){
+    result.value = "";
     display += carac;
 
     // Apagar tudo
@@ -113,7 +115,33 @@ function atualizarDisplay(carac){
     }
 }
 
+function retornarResultado(conta){
+    if(conta[conta.length] == "+" || // Termina com um sinal de operação
+    conta[conta.length] == "-" ||
+    conta[conta.length] == "x" ||
+    conta[conta.length] == "/" ||
+    !(conta.indexOf("+") > 0 || // Não possui uma operação
+    conta.indexOf("-") > 0 ||
+    conta.indexOf("x") > 0 ||
+    conta.indexOf("/") > 0)){
+        return;
+    }
+
+    // Tirar pontos
+    conta = conta.replace(/["x"]/g, "*");
+
+    // Resolvendo conta
+    res = eval(conta);
+
+    // Retornando resultado
+    result.value = res;
+    oper.value = "";
+    termo = "";
+    inter = "";
+}
+
 const oper  = document.querySelector("#taOperacao");
+const result = document.querySelector("#taResultado");
 
 const c = document.querySelector("main #sctBasica #sctButtons #dvBasico button:nth-child(4)");
     c.addEventListener("click", function apagarCarac(event){
@@ -254,4 +282,9 @@ const vir = document.querySelector("main #sctBasica #sctButtons #dvBasico button
         }else{            
             atualizarDisplay(",")
         }
+    })
+
+const equal = document.querySelector("main #sctBasica #sctButtons #dvBasico button:nth-child(19)");
+    equal.addEventListener("click", function mostrarResultado(event){
+        retornarResultado(oper.value);
     })

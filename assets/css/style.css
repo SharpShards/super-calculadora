@@ -201,3 +201,11 @@ main #sctBasica #sctButtons #dvBasico button:nth-child(16),
 main #sctBasica #sctButtons #dvBasico button:nth-child(20){
     font-size: 3rem;
 }
+
+/* Versão 2 */
+main #sctBasica #sctButtons #dvBasico button:nth-child(1),
+main #sctBasica #sctButtons #dvBasico button:nth-child(2),
+main #sctBasica #sctButtons #dvBasico button:nth-child(3){
+    opacity: 0;
+    cursor:auto;
+}
