@@ -27,4 +27,4 @@ Status: Em Progresso
 - Não gera resultado se a conta terminar com um operador ou se não tiver pelo menos um operador na conta.
 
 ## Screenshot
-![foto](https://github.com/SharpShards/super-calculadora/assets/123817885/64cc2fed-fbd6-4184-968b-da8b37a4bfdd)
+![superCalculadora](https://github.com/SharpShards/super-calculadora/assets/123817885/3499fd89-980e-42b6-9f1c-947105c6ed63)
