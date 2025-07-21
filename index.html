@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" href="assets/images/logo.png">
+    <link rel="icon" href="assets/images/logo.svg"> 
     
     <script src="assets/js/script.js" defer></script>
 </head>
 <body>
-    <!-- Versão 4 -->
+    <!-- Versão 3 -->
     <!-- <aside>
         <div id="dvCalculadora">
             <img id="imgCalculadora" src="" alt="Calculadora.">
@@ -21,65 +21,61 @@
             <img id="imgConversor" src="" alt="Conversor.">
         </div>
     </aside> -->
-    <main>
-        <section id="sctBasica">
-            <section id="sctDisplay">
-                <textarea id="taOperacao" disabled></textarea>
-                <textarea id="taResultado" disabled></textarea>
-            </section>
-            <section id="sctButtons">
-                <!-- Versão 3 -->
-                <!-- <div id="dvCientifica">
-                    <button>√</button>
-                    <button>π</button>
-                    <button>|x|</button>
-                                        
-                    <button>x<sup>2</sup></button>
-                    <button>x<sup>3</sup></button>
-                    <button>x<sup>y</sup></button>
+    <main id="mnCalculadora">
+        <section id="sctDisplay">
+            <textarea id="taOperacao" disabled></textarea>
+            <textarea id="taResultado" disabled></textarea>
+        </section>
 
-                    <button>sin</button>
-                    <button>cos</button>
-                    <button>tan</button>
+        <section id="sctButtons">
+            <div id="dvGeral">
+                <button id="btnZerar" class="btnEsp">C</button>
+                <button id="btnBackspace">
+                    <img src="assets/images/backspace.svg" alt="Apagar">
+                </button>
+            </div>
 
-                    <button>ln</button>
-                    <button>log</button>
-                    <button>x!</button>                    
+            <!-- Versão 2 -->
+            <!-- <div id="dvCientifica">
+                <button>√</button>
+                <button>π</button>
+                                    
+                <button>x<sup>2</sup></button>
+                <button>x<sup>3</sup></button>
+                <button>x<sup>y</sup></button>
 
-                    <button>1/x</button>
-                    <button>e</button>
-                    <button>e<sup>x</sup></button>
-                </div> -->
-                <div id="dvBasico">
-                    <!-- Versão 2 -->
-                    <button>(</button>
-                    <button>)</button>
-                    <button>%</button>
-                    <button>C</button>
+                <button>sin</button>
+                <button>cos</button>
+                <button>tan</button>
 
-                    <button id="btnSete">7</button>
-                    <button id="btnOito">8</button>
-                    <button id="btnNove">9</button>
-                    <button>÷</button>
+                <button>ln</button>
+                <button>log</button>
+                <button>x!</button>
+            </div> -->
 
-                    <button id="btnQua">4</button>
-                    <button id="btnCin">5</button>
-                    <button id="btnSeis">6</button>
-                    <button>×</button>
+            <div id="dvPadrao">
+                <button id="btnSete">7</button>
+                <button id="btnOito">8</button>
+                <button id="btnNove">9</button>
+                <button id="btnDiv" class="btnEsp">÷</button>
 
-                    <button id="btnUm">1</button>
-                    <button id="btnDois">2</button>
-                    <button id="btnTres">3</button>
-                    <button>-</button>
-                    
-                    <button>0</button>
-                    <button>
-                        <img src="assets/images/virgula.png" alt="Vírgula">
-                    </button>
-                    <button>=</button>
-                    <button>+</button>
-                </div>
-            </section>
+                <button id="btnQua">4</button>
+                <button id="btnCin">5</button>
+                <button id="btnSeis">6</button>
+                <button id="btnMult" class="btnEsp">×</button>
+
+                <button id="btnUm">1</button>
+                <button id="btnDois">2</button>
+                <button id="btnTres">3</button>
+                <button id="btnMinus" class="btnEsp">-</button>
+                
+                <button id="btnZero">0</button>
+                <button id="btnVirgula">
+                    <img id="imgVirgula" src="assets/images/virgula.svg" alt="Vírgula">
+                </button>
+                <button id="btnIgual" class="btnEsp">=</button>
+                <button id="btnPlus" class="btnEsp">+</button>
+            </div>
         </section>
     </main>
 </body>

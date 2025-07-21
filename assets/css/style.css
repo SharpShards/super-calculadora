@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+/* Importações */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+/* Variáveis */
 :root{
     --prin: #62d033;
-    --sec: #a61914;
-    --fundo: #010101;
-    --con: #171717;
-    --det: #272727;
-    --letras: #FFF;
+    --secun: #171717;
+    --fundo: #0a0a0a;
+    --deta: #a61914;
+    --letras: #ECE8E1;
 }
 
+/* Configurações */
 *{
     margin: 0;
     padding: 0;
@@ -16,12 +18,14 @@
 
     box-sizing: border-box;
     
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 html{
     font-size: 62.5%;
 }
+
+/* Geral */
 
 input,
 textarea{
@@ -32,18 +36,37 @@ textarea{
     caret-color: var(--prin);
 }
 
+button{
+    display: flex;
+
+    background-color: var(--secun);
+
+    color: var(--letras);
+    font-size: 2.6rem;
+    font-weight: 700;
+    
+    border-radius: 7px;
+
+    border: none;
+
+    align-items: center;
+    justify-content: center;
+}
+
 button:hover{
     cursor: pointer;
 }
 
+/* Main */
 body{
     display: flex;
 
-    height: 100vh;
-    width: 100vw;
+    background-color: var(--fundo);
+
+    justify-content: center;
 }
 
-aside{
+/* aside{
     display: flex;
 
     height: 100vh;
@@ -66,36 +89,32 @@ aside div{
 
 aside div:hover{
     cursor: pointer;
-}
+} */
 
-main{
-    flex: 1;    
-
-    background-color: var(--fundo);
-}
-
-main #sctBasica{
+#mnCalculadora{
     display: flex;
 
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 720px;
 
-    flex-direction: column;    
+    background-color: var(--fundo);
+
+    padding: 10px;
+
+    flex-direction: column;   
 }
 
-main #sctBasica #sctDisplay{
+#mnCalculadora #sctDisplay{
     flex: 1;
     display: flex;
-
-    background-color: var(--fundo);
     
     flex-direction: column;
 
     overflow: hidden;
 }
 
-main #sctBasica #sctDisplay #taResultado,
-main #sctBasica #sctDisplay #taOperacao{
+#mnCalculadora #sctDisplay #taResultado,
+#mnCalculadora #sctDisplay #taOperacao{
     height: 50%;
     width: 100%;
 
@@ -114,91 +133,72 @@ main #sctBasica #sctDisplay #taOperacao{
     overflow: hidden;
 }
 
-main #sctBasica #sctButtons{
+#mnCalculadora #sctButtons{
     display: flex;
 
     height: fit-content;
     width: 100%;
 
-    background-color: var(--fundo);
-
-    padding: 20px;
+    flex-direction: column;
 }
 
-main #sctBasica #sctButtons #dvCientifica{
+/* #mnCalculadora #sctButtons #dvCientifica{
     flex: 1;
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 60px);
     grid-gap: 10px;
-}
+} */
 
-main #sctBasica #sctButtons #dvBasico{
-    flex: 1;
+#mnCalculadora #sctButtons #dvGeral{
     display: grid;
 
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 60px);
+    grid-template-rows: 60px;
+    grid-gap: 10px;
+    grid-template-areas: ". . c backspace";
+
+    margin-bottom: 10px;
+}
+
+#mnCalculadora #sctButtons #dvGeral #btnZerar{
+    grid-area: c;
+
+    color: var(--deta);
+    font-weight: 900;
+}
+
+#mnCalculadora #sctButtons #dvGeral #btnBackspace{
+    grid-area: backspace;
+}
+
+#mnCalculadora #sctButtons #dvGeral #btnBackspace img{
+    height: 30px;
+}
+
+#mnCalculadora #sctButtons #dvPadrao{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 60px);
     grid-gap: 10px;
 }
 
-main #sctBasica #sctButtons #dvCientifica button,
-main #sctBasica #sctButtons #dvBasico button{
-    background-color: var(--con);
-
-    color: var(--letras);
-    font-size: 2rem;
-    font-weight: 400;
-    
-    border-radius: 7px;
-
-    border: none;
-}
-
-main #sctBasica #sctButtons #dvBasico button:nth-child(1),
-main #sctBasica #sctButtons #dvBasico button:nth-child(2),
-main #sctBasica #sctButtons #dvBasico button:nth-child(3),
-main #sctBasica #sctButtons #dvBasico button:nth-child(8),
-main #sctBasica #sctButtons #dvBasico button:nth-child(12),
-main #sctBasica #sctButtons #dvBasico button:nth-child(16),
-main #sctBasica #sctButtons #dvBasico button:nth-child(20){
+#mnCalculadora #sctButtons #dvPadrao .btnEsp{
     color: var(--prin);
-    font-size: 2.4rem;
-    font-weight: 600;
+    font-size: 3.6rem;  
+    font-weight: 800;
 }
 
-main #sctBasica #sctButtons #dvBasico button:nth-child(4){
-    color: var(--sec);
-    font-weight: 700;
+#mnCalculadora #sctButtons #dvPadrao #btnVirgula #imgVirgula{
+    height: 15px;
 }
 
-main #sctBasica #sctButtons #dvBasico button:nth-child(18){
-    font-size: 5rem;
-}
-
-main #sctBasica #sctButtons #dvBasico button:nth-child(18) img{
-    height: 40%;
-}
-
-main #sctBasica #sctButtons #dvBasico button:nth-child(19){
+#mnCalculadora #sctButtons #dvPadrao #btnIgual{
     background-color: var(--prin);
 
-    color: var(--fundo);
-    font-size: 4rem;
-    font-weight: 500;
-}
-
-main #sctBasica #sctButtons #dvBasico button:nth-child(12),
-main #sctBasica #sctButtons #dvBasico button:nth-child(16),
-main #sctBasica #sctButtons #dvBasico button:nth-child(20){
-    font-size: 3rem;
-}
-
-/* Versão 2 */
-main #sctBasica #sctButtons #dvBasico button:nth-child(1),
-main #sctBasica #sctButtons #dvBasico button:nth-child(2),
-main #sctBasica #sctButtons #dvBasico button:nth-child(3){
-    opacity: 0;
-    cursor:auto;
+    color: var(--secun);
+    font-size: 5rem;
+    font-weight: 800;
 }
