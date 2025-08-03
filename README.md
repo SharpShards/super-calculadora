@@ -15,8 +15,8 @@ Status: Em Progresso
 ## Funcionalidades
 - Cálculo de operações básicas
 - Números decimais
-- Retorno do resultado do cálculo
-- Apagar conta digitada errada
+- Retorno de resultado
+- Apagar último caractere
 
 ## Restrições
 - Não permite que o zero e os operadores sejam digitados primeiro.
@@ -27,4 +27,5 @@ Status: Em Progresso
 - Não gera resultado se a conta terminar com um operador ou se não tiver pelo menos um operador na conta.
 
 ## Screenshot
-![superCalculadora](https://github.com/SharpShards/super-calculadora/assets/123817885/3499fd89-980e-42b6-9f1c-947105c6ed63)
+<img width="1920" height="868" alt="screencapture-super-calculadora-ss-netlify-app-2025-08-03-20_56_11" src="https://github.com/user-attachments/assets/09ecb476-f5e8-4460-90dd-05ced7f45e8f" />
+
