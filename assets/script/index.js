@@ -41,12 +41,28 @@ function atualizarDisplay(carac){
     // // Separa os termos entre operadores e ignora índices vazios
     let termos = display.split(/[-+×÷ ]+/).filter(Boolean);
 
+    // // Separa só os sinais
+    let sinais = display.split(/[1234567890., ]+/).filter(Boolean);    
+
     // Formatação
     let form = formatarNum(termos);
 
-    // Substituição
-    for(let loop = 0; loop < termos.length; loop++){
-        display = display.replace(termos[loop], form[loop]);
+    // Junta os termos e sinais para remontar a expressão
+    display = ""
+
+    elementoF = 0
+    elementoS = 0
+
+    for(let loop = 0; loop < (termos.length + sinais.length); loop++){
+        if(loop % 2 == 0){
+            display += form[elementoF]
+
+            elementoF += 1
+        }else{
+            display += sinais[elementoS]
+
+            elementoS += 1
+        };
     }
     
     // Mostrar na tela
@@ -81,7 +97,6 @@ function formatarNum(t){
         let casas = 0;
 
         if (posVirg !== -1) {
-            // Se o ponto existe, conta quantos dígitos há após ele
             casas = f.length - posVirg - 1;
         }
 
