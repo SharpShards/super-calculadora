@@ -1,10 +1,16 @@
 // Funções
 function atualizarDisplay(carac){
-    // Zera os  resultados para começar uma nova conta
-    result.value = "";
+    // // Volta os displays pra mesma posição após a animação
+    // // Para repetir a animação da próxima vez;
+    setTimeout(() => { 
+        oper.style.transform = "translateY(0px)";
+        result.style.transform = "translateY(-200px)";
+    }, 100);
 
-    // Volta o elemento para a posição inicial para repetir a animação
-    result.style.transform = "translateY(-200px)";
+    setTimeout(() => {
+        // Zera os  resultados para começar uma nova conta
+        result.value = "";
+    }, 250)
 
     // Apagar tudo
     if(carac == "c"){
@@ -125,8 +131,6 @@ function formatarNum(t){
 
 function zerarCampos(){
     atualizarDisplay("c");
-
-    result.style.transform = "translateY(-200px)";
 }
 
 function apagarLast(){
@@ -389,12 +393,6 @@ function retornarResultado(){
         display = "";
         last = "";
     }, 500);
-
-    // // Volta o display pra mesma posição após a animação
-    // // Para repetir a animação da próxima vez
-    setTimeout(() => { 
-        oper.style.transform = "translateY(0px)";
-    }, 800);
 }
 
 // Elementos
