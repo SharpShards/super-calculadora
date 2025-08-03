@@ -3,6 +3,9 @@ function atualizarDisplay(carac){
     // Zera os  resultados para começar uma nova conta
     result.value = "";
 
+    // Volta o elemento para a posição inicial para repetir a animação
+    result.style.transform = "translateY(-200px)";
+
     // Apagar tudo
     if(carac == "c"){
         oper.value = "";
@@ -122,6 +125,8 @@ function formatarNum(t){
 
 function zerarCampos(){
     atualizarDisplay("c");
+
+    result.style.transform = "translateY(-200px)";
 }
 
 function apagarLast(){
@@ -369,12 +374,27 @@ function retornarResultado(){
 
     res = formatarNum(ar);
 
+    // Animação
+    oper.style.transform = "translateY(200px)";
+    result.style.transform = "translateY(0px)";
+
     // Retornando resultado
     result.value = res;
-    oper.value = "";
-    termo = "";
-    display = "";
-    last = "";
+
+    // // Demora a sumir com o conteúdo do display
+    // // Pra dar o efeito dele descendo
+    setTimeout(() => { 
+        oper.value = "";
+        termo = "";
+        display = "";
+        last = "";
+    }, 500);
+
+    // // Volta o display pra mesma posição após a animação
+    // // Para repetir a animação da próxima vez
+    setTimeout(() => { 
+        oper.style.transform = "translateY(0px)";
+    }, 800);
 }
 
 // Elementos

@@ -113,16 +113,35 @@ aside div:hover{
     overflow: hidden;
 }
 
-#mnCalculadora #sctDisplay #taResultado,
-#mnCalculadora #sctDisplay #taOperacao{
+#mnCalculadora #sctDisplay #dvOperacao,
+#mnCalculadora #sctDisplay #dvResultado{
     height: 50%;
     width: 100%;
 
-    color: var(--letras);
-    font-size: 5rem;
-    font-weight: 300;
+    overflow: hidden;
+}
 
+#mnCalculadora #sctDisplay #taOperacao{
+    text-align: start;
+
+    font-size: 3.6rem;
+}
+
+#mnCalculadora #sctDisplay #taResultado{
     text-align: end;
+
+    font-size: 4.5rem;
+
+    transform: translateY(-200px);
+}
+
+#mnCalculadora #sctDisplay #taResultado,
+#mnCalculadora #sctDisplay #taOperacao{
+    height: 100%;
+    width: 100%;
+
+    color: var(--letras);
+    font-weight: 300;
 
     resize: none;
 
@@ -131,6 +150,10 @@ aside div:hover{
     padding-right: 40px;
 
     overflow: hidden;
+
+    position: relative;
+
+    transition: transform 400ms linear;
 }
 
 #mnCalculadora #sctButtons{
