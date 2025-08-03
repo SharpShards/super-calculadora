@@ -41,12 +41,8 @@ function atualizarDisplay(carac){
     // // Separa os termos entre operadores e ignora índices vazios
     let termos = display.split(/[-+×÷ ]+/).filter(Boolean);
 
-    console.log(display, " -- ", termos);
-
     // Formatação
     let form = formatarNum(termos);
-
-    console.log(form);
 
     // Substituição
     for(let loop = 0; loop < termos.length; loop++){
@@ -319,34 +315,52 @@ function adicionarVirg(event){
     }
 }
 
-// function retornarResultado(conta){
-//     if(conta[conta.length] == "+" || // Termina com um sinal de operação
-//     conta[conta.length] == "-" ||
-//     conta[conta.length] == "x" ||
-//     conta[conta.length] == "/" ||
-//     !(conta.indexOf("+") > 0 || // Não possui uma operação
-//     conta.indexOf("-") > 0 ||
-//     conta.indexOf("x") > 0 ||
-//     conta.indexOf("/") > 0)){
-//         return;
-//     }
+function retornarResultado(){
+    if(last == "+" || // Termina com um sinal de operação
+    last == "-" ||
+    last == "×" ||
+    last == "÷" ||
+    !(display.indexOf("+") > 0 || // Não possui uma operação
+    display.indexOf("-") > 0 ||
+    display.indexOf("×") > 0 ||
+    display.indexOf("÷") > 0)){
+        return;
+    }
 
-//     // Tirar pontos
-//     conta = conta.replace(/["."]/g, "");
+    // Tirar pontos
+    expre = display.replace(/["."]/g, "");
 
-//     // Substituir x por operador de multiplicação
-//     conta = conta.replace(/["x"]/g, "*");
+    // Substitui as vírgulas por pontos para ele entender que é decimal
+    expre = expre.replace(/[","]/g, ".");
 
-//     // Resolvendo conta
-//     console.log(conta);
-//     res = eval(conta);
+    // Substituir × pelo operador de multiplicação
+    expre = expre.replace(/["×"]/g, "*");
 
-//     // Retornando resultado
-//     result.value = res;
-//     oper.value = "";
-//     termo = "";
-//     inter = "";
-// }
+    // Substituir ÷ pelo operador de divisão
+    expre = expre.replace(/["÷"]/g, "/");
+
+    // Resolvendo conta
+    res = eval(expre);
+
+    // Volta com as vírgulas antes da formatação
+    res = String(res).replace(/["."]/g, ",");
+
+    // Formatar resultado
+    // // Transformo em array antes pra não precisar mudar a função de formatação
+    // // Que já está criada para receber um array
+    let ar = [""]
+
+    ar[0] = String(res);
+
+    res = formatarNum(ar);
+
+    // Retornando resultado
+    result.value = res;
+    oper.value = "";
+    termo = "";
+    display = "";
+    last = "";
+}
 
 // Elementos
 const oper  = document.querySelector("#taOperacao")
@@ -390,14 +404,13 @@ const div = document.querySelector("#btnDiv");
 const virg = document.querySelector("#btnVirgula");
     virg.addEventListener("click", adicionarVirg);
 
-// const equal = document.querySelector("main #sctBasica #sctButtons #dvBasico button:nth-child(19)");
-//     equal.addEventListener("click", function mostrarResultado(event){
-//         retornarResultado(oper.value);
-//     })
+const equal = document.querySelector("#btnIgual");
+    equal.addEventListener("click", retornarResultado);
 
 // Declarações
 let display = ""; // Toda a expressão
 let termo = ""; // Número atual
 let last = ""; // Último caractere
 
+let expre = "";
 let res = "";
