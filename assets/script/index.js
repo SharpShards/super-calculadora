@@ -70,13 +70,34 @@ function atualizarDisplay(carac){
 function formatarNum(t){
     let f = t.map(function(num){
         // Verifica se termina em vírgula
-        const virg = num.endsWith(",")
+        const virg = num.endsWith(".")
+
+        // Tira os pontos de todos os termos, caso tenha.
+        // Precisa do /\./g para remover todos os pontos, senão dá problema 
+        let f = num.replace(/[\.]/g, "");
+
+        // Substitui a vírgula por ponto, para não afetar na hora da formatação.
+        f = f.replace(",", ".");
+
+        // Determina as casas decimais
+        const posVirg = f.indexOf('.');
+  
+        let casas = 0;
+
+        if (posVirg !== -1) {
+            // Se o ponto existe, conta quantos dígitos há após ele
+            casas = f.length - posVirg - 1;
+        }
+
+        const param = {
+            minimumFractionDigits: casas,
+            maximumFractionDigits: casas
+        }
+
+        // Formata
+        f = parseFloat(f).toLocaleString('pt-BR', param);
         
-        // Tira os pontos de todos os termos, caso tenha, e reformata.
-        // Precisa do /\./g para remover todos os pontos, senão dá problema  
-        let f = parseFloat(num.replace(/[\.]/g, "")).toLocaleString('pt-BR');
-        
-        // Devolve número com vírgula no final
+        // Devolve o número com vírgula no final
         if(virg){
             return `${f},`;
         }
@@ -84,8 +105,6 @@ function formatarNum(t){
         // Só devolve o número
         return f
     });
-
-    // let form = termos.map(num => parseFloat(num.replace(/[\.,]/g, "")).toLocaleString('pt-BR'));
 
     return f;
 }
@@ -290,19 +309,15 @@ function adicionarDiv(event){
      }       
 }
 
-// function adicionarVirg(event){
-//     if(last == "," ||
-//     termo.indexOf(',') > 0){ // Um mesmo número não pode ter mais de uma vírgula.
-//         event.preventDefault();
-//     }else if(termo.length == 0){ // A expressão não pode começar com vírgula
-//         // oper.value += "0,";
-//         // termo = "0,";
-
-//         atualizarDisplay("0,");
-//     }else{            
-//         atualizarDisplay(",");
-//     }
-// }
+function adicionarVirg(event){
+    if(last == "," ||
+    termo.indexOf(',') > 0 || // Um mesmo número não pode ter mais de uma vírgula.
+    termo.length == 0){  // A expressão não pode começar com vírgula
+        event.preventDefault();
+    }else{          
+        atualizarDisplay(".");
+    }
+}
 
 // function retornarResultado(conta){
 //     if(conta[conta.length] == "+" || // Termina com um sinal de operação
@@ -372,8 +387,8 @@ const mult = document.querySelector("#btnMult");
 const div = document.querySelector("#btnDiv");
     div.addEventListener("click", adicionarDiv)
 
-// const virg = document.querySelector("#btnVirgula");
-//     virg.addEventListener("click", adicionarVirg);
+const virg = document.querySelector("#btnVirgula");
+    virg.addEventListener("click", adicionarVirg);
 
 // const equal = document.querySelector("main #sctBasica #sctButtons #dvBasico button:nth-child(19)");
 //     equal.addEventListener("click", function mostrarResultado(event){
