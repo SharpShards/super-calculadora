@@ -225,3 +225,33 @@ aside div:hover{
     font-size: 5rem;
     font-weight: 800;
 }
+
+@media(max-height:600px){
+    button{
+        font-size: 2rem;
+    }
+
+    #mnCalculadora #sctButtons #dvGeral{
+        grid-template-rows: 50px;
+    }
+
+    #mnCalculadora #sctButtons #dvPadrao{
+        grid-template-rows: repeat(4, 50px);
+    }
+
+    #mnCalculadora #sctButtons #dvGeral #btnBackspace img{
+        height: 25px;
+    }
+
+    #mnCalculadora #sctButtons #dvPadrao .btnEsp{
+        font-size: 3rem;  
+    }
+
+    #mnCalculadora #sctButtons #dvPadrao #btnVirgula #imgVirgula{
+        height: 10px;
+    }
+
+    #mnCalculadora #sctButtons #dvPadrao #btnIgual{
+        font-size: 4rem;
+    }
+}
